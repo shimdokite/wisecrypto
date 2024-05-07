@@ -40,6 +40,7 @@ const useForm = <T extends CreateAccount | LoginInfo | ChangeEmailAndPassword>({
     next,
     submitting,
     values,
+    setValues,
     setNext,
     setSubmitting,
     handleInputValueChange,
