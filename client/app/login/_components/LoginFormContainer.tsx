@@ -23,8 +23,8 @@ export default function LoginFormContainer() {
     onSubmit: async (values: LoginInfo) => {
       const { email, password } = values;
 
-      const userInfo = await postUserCredentials({ email, password });
-      console.log(userInfo.data);
+      await postUserCredentials({ email, password });
+      router.push('/main');
     },
   });
 
