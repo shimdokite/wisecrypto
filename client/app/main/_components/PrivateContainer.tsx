@@ -3,7 +3,7 @@
 import { FormEvent, useEffect } from 'react';
 import { getCookie } from 'cookies-next';
 
-import { getUserDetail } from '../_api/user';
+import { getUserDetail, patchUserDetail } from '../_api/user';
 
 import useNavigationStore from 'store/navigationStore';
 
@@ -28,7 +28,7 @@ export default function PrivateContainer() {
     };
 
     getMyDetail();
-  }, []);
+  }, [id]);
 
   const { values, handleInputValueChange, setSubmitting, setValues } = useForm({
     initialValue: {
@@ -39,8 +39,12 @@ export default function PrivateContainer() {
     onSubmit: async (values: ChangeEmailAndPassword) => {
       const { email, previousPassword, changedPassword } = values;
 
-      // const userInfo = await postUserCredentials({ email, password });
-      // console.log(userInfo.data);
+      await patchUserDetail({
+        id,
+        email,
+        previousPassword,
+        changedPassword,
+      });
     },
   });
 
