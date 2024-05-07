@@ -1,6 +1,9 @@
 'use client';
 
-import { FormEvent } from 'react';
+import { FormEvent, useEffect } from 'react';
+import { getCookie } from 'cookies-next';
+
+import { getUserDetail } from '../_api/user';
 
 import useNavigationStore from 'store/navigationStore';
 
@@ -11,9 +14,23 @@ import { SaveChangeButton, PrivatePresentation } from '.';
 import { ChangeEmailAndPassword } from '../types/data';
 
 export default function PrivateContainer() {
+  const id = getCookie('userId');
+
   const { setSettingType } = useNavigationStore();
 
-  const { values, handleInputValueChange, setSubmitting } = useForm({
+  useEffect(() => {
+    const getMyDetail = async () => {
+      const response = await getUserDetail(id as string);
+
+      response.map((userInfo: ChangeEmailAndPassword) =>
+        setValues({ ...values, email: userInfo.email }),
+      );
+    };
+
+    getMyDetail();
+  }, []);
+
+  const { values, handleInputValueChange, setSubmitting, setValues } = useForm({
     initialValue: {
       email: '',
       previousPassword: '',
@@ -27,7 +44,6 @@ export default function PrivateContainer() {
     },
   });
 
-  //TODO: handleSubmit hook으로 빼기
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
     const { email, previousPassword, changedPassword } = values;
