@@ -1,12 +1,16 @@
+'use client';
+
 import Image from 'next/image';
 
-import { USER_INFO } from './ProfileFrame';
+import useUserStore from 'store/userStore';
 
 export default function ProfileImageEditor() {
+  const { userDetail } = useUserStore();
+
   return (
     <div className="flex flex-col justify-center items-center mt-4">
       <Image
-        src={USER_INFO.profileImage}
+        src={userDetail.profileImage}
         alt="profile image"
         width={80}
         height={80}
@@ -21,7 +25,7 @@ export default function ProfileImageEditor() {
         className="relative left-7 bottom-7 rounded-full"
       />
 
-      <h2 className="text-2xl font-semibold -mt-5">{USER_INFO.name}</h2>
+      <h2 className="text-2xl font-semibold -mt-5">{userDetail.name}</h2>
     </div>
   );
 }

@@ -7,8 +7,5 @@ import { LoginInfo } from '../_types/data';
 export const postUserCredentials = async (login: LoginInfo) => {
   const response = await instance.post('/login', login);
 
-  const userId = response.data.id;
-  setCookie('userId', userId);
-
   return response;
 };
