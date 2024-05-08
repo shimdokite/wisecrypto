@@ -1,16 +1,30 @@
+'use client';
+
+import { useEffect } from 'react';
 import Image from 'next/image';
 
-export const USER_INFO = {
-  name: 'Shimdokite',
-  profileImage: '/assets/image/남순.jpg',
-};
+import { getUserDetail } from '../_api/user';
+
+import useUserStore from 'store/userStore';
 
 export default function ProfileFrame() {
+  const { setUserDetail, userDetail } = useUserStore();
+
+  useEffect(() => {
+    const getMyDetail = async () => {
+      const response = await getUserDetail();
+
+      setUserDetail({ ...response });
+    };
+
+    getMyDetail();
+  }, []);
+
   return (
     <section className="flex items-center mx-[15px]">
       <div className="w-full flex gap-3 items-center">
         <Image
-          src={USER_INFO.profileImage || USER_DEFAULT_PROFILE_IMAGE}
+          src={userDetail.profileImage || USER_DEFAULT_PROFILE_IMAGE}
           alt="profile image"
           width={40}
           height={40}
@@ -21,7 +35,7 @@ export default function ProfileFrame() {
           <p className="text-Gray2-1 text-xs">Halo,</p>
 
           <h1 className="text-Black-1 text-xl font-semibold">
-            {USER_INFO.name}
+            {userDetail.name}
           </h1>
         </div>
       </div>

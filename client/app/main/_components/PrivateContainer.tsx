@@ -1,11 +1,11 @@
 'use client';
 
 import { FormEvent, useEffect } from 'react';
-import { getCookie } from 'cookies-next';
 
-import { getUserDetail, patchUserDetail } from '../_api/user';
+import { patchUserDetail } from '../_api/user';
 
 import useNavigationStore from 'store/navigationStore';
+import useUserStore from 'store/userStore';
 
 import useForm from 'hooks/useForm';
 
@@ -14,25 +14,12 @@ import { SaveChangeButton, PrivatePresentation } from '.';
 import { ChangeEmailAndPassword } from '../types/data';
 
 export default function PrivateContainer() {
-  const id = getCookie('userId');
-
   const { setSettingType } = useNavigationStore();
+  const { userDetail, setUserDetail } = useUserStore();
 
-  useEffect(() => {
-    const getMyDetail = async () => {
-      const response = await getUserDetail(id as string);
-
-      response.map((userInfo: ChangeEmailAndPassword) =>
-        setValues({ ...values, email: userInfo.email }),
-      );
-    };
-
-    getMyDetail();
-  }, [id]);
-
-  const { values, handleInputValueChange, setSubmitting, setValues } = useForm({
+  const { values, handleInputValueChange, setSubmitting } = useForm({
     initialValue: {
-      email: '',
+      email: userDetail.email,
       previousPassword: '',
       changedPassword: '',
     },
@@ -40,13 +27,16 @@ export default function PrivateContainer() {
       const { email, previousPassword, changedPassword } = values;
 
       await patchUserDetail({
-        id,
         email,
         previousPassword,
         changedPassword,
       });
     },
   });
+
+  useEffect(() => {
+    setUserDetail({ ...userDetail, email: values.email });
+  }, [values.email]);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
