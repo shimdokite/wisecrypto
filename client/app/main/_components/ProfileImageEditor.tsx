@@ -2,10 +2,10 @@
 
 import Image from 'next/image';
 
-import useUserStore from 'store/userStore';
+import useUserDetailQuery from '../hooks/query/useUserDetailQuery';
 
 export default function ProfileImageEditor() {
-  const { userDetail } = useUserStore();
+  const { userDetail } = useUserDetailQuery();
 
   return (
     <div className="flex flex-col justify-center items-center mt-4">
