@@ -10,13 +10,13 @@ export default function MarketFilter() {
   return (
     <section className="w-full flex gap-2 my-4 mx-[15px]">
       {MARKET.map((market) => (
-        <>
+        <div key={market.id}>
           <FilterButton
             market={selected}
             clickToMarket={() => setSelected(market.name)}>
             {market.name}
           </FilterButton>
-        </>
+        </div>
       ))}
     </section>
   );
