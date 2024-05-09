@@ -1,34 +1,18 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
-import { getMarketDetail } from '../_api/market';
+import useMarketDetailQuery from '../hooks/query/useMarketDetailQuery';
 
-interface Market {
-  id: number;
-  marketImage: string;
-  marketName: string;
-  baseCoin: string;
-  marketCap: string;
-  percent: string;
-}
+import { Market } from '../types/data';
 
 export default function Watchlist() {
-  const [market, setMarket] = useState<Market[]>();
+  const { market } = useMarketDetailQuery();
 
-  useEffect(() => {
-    const getMarketInfo = async () => {
-      const marketDetail = await getMarketDetail();
-
-      setMarket(marketDetail);
-    };
-
-    getMarketInfo();
-  }, []);
-
-  return market?.map((platform) => (
-    <article className="flex justify-between items-center bg-White-1 w-[343px] h-[88px] rounded-[10px] px-4">
+  return market?.map((platform: Market) => (
+    <article
+      key={platform.id}
+      className="flex justify-between items-center bg-White-1 w-[343px] h-[88px] rounded-[10px] px-4">
       <div className="flex items-center gap-4">
         <div className="w-16 h-16 rounded-[10px] bg-Light-1 flex justify-center items-center">
           <Image
