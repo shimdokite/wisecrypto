@@ -3,6 +3,8 @@ import { Mulish, Montserrat } from 'next/font/google';
 
 import './_shared/styles/globals.css';
 
+import { ReactQueryProvider } from 'components';
+
 const mulish = Mulish({ subsets: ['latin'] });
 const montserrat = Montserrat({ subsets: ['latin'], variable: '--montserrat' });
 
@@ -19,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${mulish.className} ${montserrat.variable}`}>
-        {children}
+        <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>
   );
