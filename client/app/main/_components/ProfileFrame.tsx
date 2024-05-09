@@ -1,30 +1,17 @@
 'use client';
 
-import { useEffect } from 'react';
 import Image from 'next/image';
 
-import { getUserDetail } from '../_api/user';
-
-import useUserStore from 'store/userStore';
+import useUserDetailQuery from '../hooks/query/useUserDetailQuery';
 
 export default function ProfileFrame() {
-  const { setUserDetail, userDetail } = useUserStore();
-
-  useEffect(() => {
-    const getMyDetail = async () => {
-      const response = await getUserDetail();
-
-      setUserDetail({ ...response });
-    };
-
-    getMyDetail();
-  }, []);
+  const { userDetail } = useUserDetailQuery();
 
   return (
     <section className="flex items-center mx-[15px]">
       <div className="w-full flex gap-3 items-center">
         <Image
-          src={userDetail.profileImage || USER_DEFAULT_PROFILE_IMAGE}
+          src={userDetail?.profileImage || USER_DEFAULT_PROFILE_IMAGE}
           alt="profile image"
           width={40}
           height={40}
@@ -35,7 +22,7 @@ export default function ProfileFrame() {
           <p className="text-Gray2-1 text-xs">Halo,</p>
 
           <h1 className="text-Black-1 text-xl font-semibold">
-            {userDetail.name}
+            {userDetail?.name || 'Unknown'}
           </h1>
         </div>
       </div>

@@ -4,6 +4,7 @@ export default function MyAsset() {
   //TODO: 코인 회사 데이터 node 서버 만들기
   const USER_ASSETS = [
     {
+      id: 1,
       image: '/assets/image/bitcoin.svg',
       title: 'BTC',
       name: 'Bitcoin',
@@ -12,6 +13,7 @@ export default function MyAsset() {
       coin: '0.0012',
     },
     {
+      id: 2,
       image: '/assets/image/etherium.svg',
       title: 'ETH',
       name: 'Etherium',
@@ -22,7 +24,9 @@ export default function MyAsset() {
   ];
 
   return USER_ASSETS.map((asset) => (
-    <section className="h-[119px] flex flex-col justify-center items-center bg-White-1 rounded-[10px] px-[26px] py-4">
+    <section
+      key={asset.id}
+      className="h-[119px] flex flex-col justify-center items-center bg-White-1 rounded-[10px] px-[26px] py-4">
       <div className="w-full h-full flex justify-between items-center gap-[25px]">
         <div className="flex items-center gap-1">
           <div className="flex justify-center items-center w-10 h-10 bg-Light-1 rounded-[10px]">

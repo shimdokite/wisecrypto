@@ -1,21 +1,18 @@
 'use client';
 
-import { FormEvent, useEffect } from 'react';
-
-import { patchUserDetail } from '../_api/user';
+import { FormEvent } from 'react';
 
 import useNavigationStore from 'store/navigationStore';
-import useUserStore from 'store/userStore';
 
+import useUpdateUserDetailMutation from '../hooks/mutation/useUpdateUserDetailMutation';
+import useUserDetailQuery from '../hooks/query/useUserDetailQuery';
 import useForm from 'hooks/useForm';
 
 import { SaveChangeButton, PrivatePresentation } from '.';
 
-import { ChangeEmailAndPassword } from '../types/data';
-
 export default function PrivateContainer() {
   const { setSettingType } = useNavigationStore();
-  const { userDetail, setUserDetail } = useUserStore();
+  const { userDetail } = useUserDetailQuery();
 
   const { values, handleInputValueChange, setSubmitting } = useForm({
     initialValue: {
@@ -23,25 +20,21 @@ export default function PrivateContainer() {
       previousPassword: '',
       changedPassword: '',
     },
-    onSubmit: async (values: ChangeEmailAndPassword) => {
-      const { email, previousPassword, changedPassword } = values;
-
-      await patchUserDetail({
-        email,
-        previousPassword,
-        changedPassword,
-      });
+    onSubmit: async () => {
+      patchUserDetail();
     },
   });
 
-  useEffect(() => {
-    setUserDetail({ ...userDetail, email: values.email });
-  }, [values.email]);
+  const { email, previousPassword, changedPassword } = values;
+
+  const { mutate: patchUserDetail } = useUpdateUserDetailMutation({
+    email,
+    previousPassword,
+    changedPassword,
+  });
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
-    const { email, previousPassword, changedPassword } = values;
-
     if (email && previousPassword && changedPassword) setSubmitting(true);
   };
 

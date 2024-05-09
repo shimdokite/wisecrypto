@@ -1,5 +1,3 @@
-import { setCookie } from 'cookies-next';
-
 import instance from '../../_shared/api/instance';
 
 import { LoginInfo } from '../_types/data';

@@ -11,3 +11,12 @@ export interface UserDetail {
   name: string;
   profileImage: string;
 }
+
+export interface Market {
+  id: number;
+  marketImage: string;
+  marketName: string;
+  baseCoin: string;
+  marketCap: string;
+  percent: string;
+}
