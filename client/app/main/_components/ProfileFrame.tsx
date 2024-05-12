@@ -4,6 +4,8 @@ import Image from 'next/image';
 
 import useUserDetailQuery from '../hooks/query/useUserDetailQuery';
 
+import { USER_DEFAULT_PROFILE_IMAGE } from '../constants/data';
+
 export default function ProfileFrame() {
   const { userDetail } = useUserDetailQuery();
 
@@ -39,5 +41,3 @@ export default function ProfileFrame() {
     </section>
   );
 }
-
-const USER_DEFAULT_PROFILE_IMAGE = '/assets/image/default_profile_image.svg';

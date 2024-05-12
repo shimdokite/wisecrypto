@@ -29,3 +29,6 @@ export const PROFILE_SETTING = {
     image: '/assets/icon/resign.svg',
   },
 };
+
+export const USER_DEFAULT_PROFILE_IMAGE =
+  '/assets/image/default_profile_image.svg';
