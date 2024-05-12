@@ -4,13 +4,15 @@ import Image from 'next/image';
 
 import useUserDetailQuery from '../hooks/query/useUserDetailQuery';
 
+import { USER_DEFAULT_PROFILE_IMAGE } from '../constants/data';
+
 export default function ProfileImageEditor() {
   const { userDetail } = useUserDetailQuery();
 
   return (
     <div className="flex flex-col justify-center items-center mt-4">
       <Image
-        src={userDetail.profileImage}
+        src={userDetail?.profileImage || USER_DEFAULT_PROFILE_IMAGE}
         alt="profile image"
         width={80}
         height={80}
@@ -25,7 +27,9 @@ export default function ProfileImageEditor() {
         className="relative left-7 bottom-7 rounded-full"
       />
 
-      <h2 className="text-2xl font-semibold -mt-5">{userDetail.name}</h2>
+      <h2 className="text-2xl font-semibold -mt-5">
+        {userDetail?.name || 'Unknown'}
+      </h2>
     </div>
   );
 }
