@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import { Mulish, Montserrat } from 'next/font/google';
+import { Slide, ToastContainer } from 'react-toastify';
 
 import './_shared/styles/globals.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { ReactQueryProvider } from 'components';
 
@@ -21,7 +23,17 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${mulish.className} ${montserrat.variable}`}>
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <ReactQueryProvider>
+          <ToastContainer
+            position="top-center"
+            autoClose={3000}
+            closeOnClick
+            closeButton
+            theme="light"
+            transition={Slide}
+          />
+          {children}
+        </ReactQueryProvider>
       </body>
     </html>
   );

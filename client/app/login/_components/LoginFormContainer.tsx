@@ -3,9 +3,8 @@
 import { FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { postUserCredentials } from '../_api/user';
-
 import useForm from 'hooks/useForm';
+import useLoginMutation from '../hooks/useLoginMutation';
 
 import { Logo, SignTop } from 'components';
 import LoginFormPresentation from './LoginFormPresentation';
@@ -14,6 +13,8 @@ import { LoginInfo } from '../_types/data';
 
 export default function LoginFormContainer() {
   const router = useRouter();
+
+  const { mutate: postUserCredentials } = useLoginMutation();
 
   const { values, handleInputValueChange, setSubmitting } = useForm({
     initialValue: {
@@ -24,7 +25,6 @@ export default function LoginFormContainer() {
       const { email, password } = values;
 
       await postUserCredentials({ email, password });
-      router.push('/main');
     },
   });
 

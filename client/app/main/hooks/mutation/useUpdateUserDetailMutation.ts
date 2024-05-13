@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { toast } from 'react-toastify';
 
 import { patchUserDetail } from '../../_api/user';
 
@@ -22,13 +23,15 @@ const useUpdateUserDetailMutation = ({
         previousPassword,
         changedPassword,
       }),
+
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['userDetail'] });
 
-      return alert('diubah.'), setSettingType('');
+      return toast.success('diubah.'), setSettingType('');
     },
+
     onError: () => {
-      return alert('Email atau kata sandi tidak cocok.');
+      return toast.error('Email atau kata sandi tidak cocok.');
     },
   });
 
