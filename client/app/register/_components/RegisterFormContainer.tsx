@@ -1,12 +1,12 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
+import { toast } from 'react-toastify';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import { postNewUserInfomation } from '../_api/user';
-
 import useForm from 'hooks/useForm';
+import useRegisterMutation from '../hooks/mutate/useRegisterMutation';
 
 import { Logo, SignTop } from 'components';
 import RegisterFormPresentation from './RegisterFormPresentation';
@@ -19,6 +19,8 @@ export default function RegisterFormContainer() {
 
   const router = useRouter();
 
+  const { mutate: postNewUserInfomation } = useRegisterMutation();
+
   const { next, values, handleInputValueChange, setSubmitting, setNext } =
     useForm({
       initialValue: {
@@ -30,22 +32,10 @@ export default function RegisterFormContainer() {
         check: false,
       },
       onSubmit: async (values: CreateAccount) => {
-        const name = values.email || '';
-        const phoneNumber = values.phoneNumber || '';
-        const position = values.position || '';
-        const email = values.email || '';
-        const password = values.password || '';
+        const { name, phoneNumber, position, email, password } = values;
+        const userInfo = { name, phoneNumber, position, email, password };
 
-        const userInfo: CreateAccount = {
-          name,
-          phoneNumber,
-          position,
-          email,
-          password,
-        };
-
-        const test = await postNewUserInfomation(userInfo);
-        console.log(test);
+        await postNewUserInfomation(userInfo);
       },
     });
 
@@ -62,7 +52,7 @@ export default function RegisterFormContainer() {
     } = values;
 
     if (password !== passwordCheck) {
-      alert('비밀번호가 일치하지 않습니다.');
+      toast.error('Kata sandi tidak cocok.');
       return;
     }
 
