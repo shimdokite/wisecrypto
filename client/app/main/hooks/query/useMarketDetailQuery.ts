@@ -10,6 +10,9 @@ const useMarketDetailQuery = () => {
   } = useQuery({
     queryKey: ['marketDetail'],
     queryFn: () => getMarketDetail(),
+    staleTime: 300000,
+    refetchInterval: 300000,
+    refetchIntervalInBackground: true,
   });
 
   return { market, isError, isLoading };
