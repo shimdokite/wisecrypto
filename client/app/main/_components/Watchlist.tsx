@@ -1,5 +1,4 @@
 'use client';
-
 import Image from 'next/image';
 
 import useMarketDetailQuery from '../hooks/query/useMarketDetailQuery';
@@ -7,7 +6,10 @@ import useMarketDetailQuery from '../hooks/query/useMarketDetailQuery';
 import { Market } from '../types/data';
 
 export default function Watchlist() {
-  const { market } = useMarketDetailQuery();
+  const { market, isError, isLoading } = useMarketDetailQuery();
+
+  if (isError) return <p>Error!</p>;
+  if (isLoading) return <p>Loading...</p>;
 
   return market?.map((platform: Market) => (
     <article
@@ -25,23 +27,27 @@ export default function Watchlist() {
 
         <div className="flex flex-col">
           <p className="text-Black-1 text-xl font-semibold">
-            {platform.baseCoin}/BUSD
+            {platform.symbol}/BUSD
           </p>
 
-          <p className="text-Gray-1 font-light">{platform.marketName}</p>
+          <p className="text-Gray-1 font-light">{platform.name}</p>
         </div>
       </div>
 
       <div className="flex flex-col items-end gap-1">
-        <p className="text-Black-1 font-semibold">${platform.marketCap}</p>
+        <p className="text-Black-1 font-semibold">
+          ${Number(platform.price).toFixed(2)}
+        </p>
 
         <div
           className={`${
-            platform.percent[0] === '-' ? 'bg-Danger-1' : 'bg-Success-1'
+            platform.percent_change_24h[0] === '-'
+              ? 'bg-Danger-1'
+              : 'bg-Success-1'
           } rounded-lg flex justify-center items-center px-1 py-1 gap-[2px] opacity-80`}>
           <Image
             src={
-              platform.percent[0] === '-'
+              platform.percent_change_24h[0] === '-'
                 ? '/assets/icon/down.svg'
                 : '/assets/icon/up.svg'
             }
@@ -51,7 +57,7 @@ export default function Watchlist() {
           />
 
           <p className="text-White-1 font-semibold text-[10px]">
-            {platform.percent}
+            {Number(platform.percent_change_24h).toFixed(2)}
           </p>
         </div>
       </div>
