@@ -14,9 +14,9 @@ export interface UserDetail {
 
 export interface Market {
   id: number;
+  name: string;
+  symbol: string;
+  price: string;
   marketImage: string;
-  marketName: string;
-  baseCoin: string;
-  marketCap: string;
-  percent: string;
+  percent_change_24h: string;
 }
