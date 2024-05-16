@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect } from 'react';
+
 import useNavigationStore from 'store/navigationStore';
 
 import {
@@ -15,6 +17,10 @@ export default function Profile() {
   const renderSetting = (settingType: string) => {
     if (settingType === 'Privasi') return <PrivateContainer />;
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

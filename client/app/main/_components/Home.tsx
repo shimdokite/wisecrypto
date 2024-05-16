@@ -1,3 +1,7 @@
+'use client';
+
+import { useEffect } from 'react';
+
 import {
   CheckMyBalance,
   MyAsset,
@@ -7,6 +11,10 @@ import {
 } from '.';
 
 export default function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="mt-4">
       <div className="flex flex-col gap-4">
