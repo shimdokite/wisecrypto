@@ -26,7 +26,7 @@ export default function MoneyTransactionButton() {
               alt="plus button"
               width={20}
               height={20}
-              className="mb-[2px]"
+              className="mb-[2px] w-auto h-auto"
             />
             <p className="text-SpringGreen-1 text-sm">Tambah</p>
           </div>

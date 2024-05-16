@@ -24,7 +24,7 @@ export default function ProfileImageEditor() {
         alt="profile image"
         width={28}
         height={28}
-        className="relative left-7 bottom-7 rounded-full"
+        className="relative left-7 bottom-7 rounded-full w-auto h-auto"
       />
 
       <h2 className="text-2xl font-semibold -mt-5">

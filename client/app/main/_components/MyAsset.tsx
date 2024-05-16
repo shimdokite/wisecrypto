@@ -30,7 +30,13 @@ export default function MyAsset() {
       <div className="w-full h-full flex justify-between items-center gap-[25px]">
         <div className="flex items-center gap-1">
           <div className="flex justify-center items-center w-10 h-10 bg-Light-1 rounded-[10px]">
-            <Image src={asset.image} alt="brand image" width={28} height={28} />
+            <Image
+              src={asset.image}
+              alt="brand image"
+              width={28}
+              height={28}
+              className="w-full h-auto"
+            />
           </div>
 
           <div className="flex flex-col">
