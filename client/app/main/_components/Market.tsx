@@ -1,13 +1,11 @@
 'use client';
 
-import { useEffect } from 'react';
+import useScrollToTop from 'hooks/useScrollToTop';
 
 import { Search, MarketFilter, Watchlist } from '.';
 
 export default function Market() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useScrollToTop();
 
   return (
     <div className="w-full mt-4">

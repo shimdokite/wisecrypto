@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import useScrollToTop from 'hooks/useScrollToTop';
 
 import {
   CheckMyBalance,
@@ -11,9 +11,7 @@ import {
 } from '.';
 
 export default function Home() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useScrollToTop();
 
   return (
     <div className="mt-4">
