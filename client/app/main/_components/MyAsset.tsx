@@ -35,7 +35,7 @@ export default function MyAsset() {
               alt="brand image"
               width={28}
               height={28}
-              className="w-full h-auto"
+              className="w-full h-full"
             />
           </div>
 

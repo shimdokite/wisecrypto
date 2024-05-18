@@ -20,3 +20,8 @@ export interface Market {
   marketImage: string;
   percent_change_24h: string;
 }
+
+export interface Markets {
+  market: [];
+  pageInfo: {};
+}

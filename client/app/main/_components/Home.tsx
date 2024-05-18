@@ -1,6 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
+import useMarketDetailInfiniteQuery from '../hooks/query/useMarketDetailInfiniteQuery';
+import useInfiniteScroll from '../hooks/useInfiniteScroll';
+import useScrollToTop from 'hooks/useScrollToTop';
 
 import {
   CheckMyBalance,
@@ -11,9 +13,18 @@ import {
 } from '.';
 
 export default function Home() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const { data, isError, isLoading, isFetching, fetchNextPage, hasNextPage } =
+    useMarketDetailInfiniteQuery();
+
+  const ref = useInfiniteScroll({
+    isFetching,
+    fetchNextPage,
+    hasNextPage,
+  });
+
+  useScrollToTop();
+
+  console.log('1:', ref);
 
   return (
     <div className="mt-4">
@@ -47,8 +58,13 @@ export default function Home() {
             <p className="text-sm">Watchlist</p>
 
             <div className="flex flex-col gap-2">
-              <Watchlist />
+              <Watchlist
+                market={data}
+                isError={isError}
+                isLoading={isLoading}
+              />
             </div>
+            <div ref={ref}></div>
           </div>
         </div>
       </div>

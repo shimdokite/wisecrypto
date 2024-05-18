@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
-
 import useNavigationStore from 'store/navigationStore';
+
+import useScrollToTop from 'hooks/useScrollToTop';
 
 import {
   ProfileImageEditor,
@@ -18,9 +18,7 @@ export default function Profile() {
     if (settingType === 'Privasi') return <PrivateContainer />;
   };
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useScrollToTop();
 
   return (
     <>
