@@ -10,7 +10,7 @@ const useMarketDetailInfiniteQuery = () => {
     isLoading,
     isError,
     isFetching,
-    error,
+    isSuccess,
   } = useInfiniteQuery({
     queryKey: ['marketDetail'],
     queryFn: ({ pageParam = 0 }) => getMarketDetail(pageParam),
@@ -27,7 +27,7 @@ const useMarketDetailInfiniteQuery = () => {
     isLoading,
     isError,
     isFetching,
-    error,
+    isSuccess,
   };
 };
 

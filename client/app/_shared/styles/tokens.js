@@ -38,7 +38,13 @@ const tokens = {
     },
     "SpringGreen": {
       "1": "#33D587"
-    }
+    },
+    "VividCerulean": {
+      "1": "#00A1E5"
+    },
+    "MintGreen": {
+      "1": "#189B54"
+    },
   },
   
   boxShadow: {
