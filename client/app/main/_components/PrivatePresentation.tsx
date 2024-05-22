@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { ChangeEmailAndPassword } from '../types/data';
+import { ChangeEmailAndPassword } from '../_types/data';
 
 interface PrivatePresentationProps {
   values: ChangeEmailAndPassword;

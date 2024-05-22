@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { LoginInfo } from '../../login/_types/data';
 import { CreateAccount } from '../../register/_types/data';
-import { ChangeEmailAndPassword } from '../../main/types/data';
+import { ChangeEmailAndPassword } from '../../main/_types/data';
 
 interface UseFormProps<
   T extends CreateAccount | LoginInfo | ChangeEmailAndPassword,

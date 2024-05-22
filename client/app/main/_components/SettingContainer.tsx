@@ -4,7 +4,7 @@ import useNavigationStore from 'store/navigationStore';
 
 import { SettingPresentation } from '.';
 
-import { PROFILE_SETTING } from '../constants/data';
+import { PROFILE_SETTING } from '../_constants/data';
 
 export default function SettingContainer() {
   const { setSettingType } = useNavigationStore();

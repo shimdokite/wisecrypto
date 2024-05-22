@@ -4,7 +4,7 @@ import {
   InfiniteQueryObserverResult,
 } from '@tanstack/react-query';
 
-import { Markets } from '../types/data';
+import { Markets } from '../_types/data';
 
 interface InfiniteScroll {
   isFetching: boolean;

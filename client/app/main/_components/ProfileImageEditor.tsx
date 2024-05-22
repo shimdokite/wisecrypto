@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 
-import useUserDetailQuery from '../hooks/query/useUserDetailQuery';
+import useUserDetailQuery from '../_hooks/query/useUserDetailQuery';
 
-import { USER_DEFAULT_PROFILE_IMAGE } from '../constants/data';
+import { USER_DEFAULT_PROFILE_IMAGE } from '../_constants/data';
 
 export default function ProfileImageEditor() {
   const { userDetail } = useUserDetailQuery();

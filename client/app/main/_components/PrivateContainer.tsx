@@ -4,8 +4,8 @@ import { FormEvent } from 'react';
 
 import useNavigationStore from 'store/navigationStore';
 
-import useUpdateUserDetailMutation from '../hooks/mutation/useUpdateUserDetailMutation';
-import useUserDetailQuery from '../hooks/query/useUserDetailQuery';
+import useUpdateUserDetailMutation from '../_hooks/mutation/useUpdateUserDetailMutation';
+import useUserDetailQuery from '../_hooks/query/useUserDetailQuery';
 import useForm from 'hooks/useForm';
 
 import { SaveChangeButton, PrivatePresentation } from '.';

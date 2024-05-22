@@ -5,7 +5,7 @@ import { patchUserDetail } from '../../_api/user';
 
 import useNavigationStore from 'store/navigationStore';
 
-import { ChangeEmailAndPassword } from '../../types/data';
+import { ChangeEmailAndPassword } from '../../_types/data';
 
 const useUpdateUserDetailMutation = ({
   email,

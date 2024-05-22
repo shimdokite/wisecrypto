@@ -1,7 +1,7 @@
 'use client';
 
-import useMarketDetailInfiniteQuery from '../hooks/query/useMarketDetailInfiniteQuery';
-import useInfiniteScroll from '../hooks/useInfiniteScroll';
+import useMarketDetailInfiniteQuery from '../_hooks/query/useMarketDetailInfiniteQuery';
+import useInfiniteScroll from '../_hooks/useInfiniteScroll';
 import useScrollToTop from 'hooks/useScrollToTop';
 
 import {

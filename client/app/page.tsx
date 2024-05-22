@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
-import useMarketDetailInfiniteQuery from './main/hooks/query/useMarketDetailInfiniteQuery';
+import useMarketDetailInfiniteQuery from './main/_hooks/query/useMarketDetailInfiniteQuery';
 
 import Spinner from '../public/assets/icon/spinner.svg';
 

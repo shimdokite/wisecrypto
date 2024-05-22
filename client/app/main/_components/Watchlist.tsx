@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 
-import { Market, Markets } from '../types/data';
+import { Market, Markets } from '../_types/data';
 
 interface WatchlistProps {
   market: any;

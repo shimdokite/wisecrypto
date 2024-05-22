@@ -1,6 +1,6 @@
 import instance from 'api/instance';
 
-import { ChangeEmailAndPassword } from '../types/data';
+import { ChangeEmailAndPassword } from '../_types/data';
 
 export const getUserDetail = async () => {
   const response = await instance.get(`/accounts`);
