@@ -48,7 +48,7 @@ export default function RegisterFormPresentation({
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="font-montserrat">Konfirmasi Kata Sandi</label>
+            <label className="font-montserrat">Sandi</label>
             <div className="relative">
               <input
                 type={isPasswordShow ? 'text' : 'password'}
