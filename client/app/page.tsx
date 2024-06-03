@@ -14,7 +14,7 @@ export default function SplashScreen() {
   const { isSuccess } = useMarketDetailInfiniteQuery();
 
   const delay = () => {
-    return setTimeout(() => router.push('/main'), 3000);
+    return setTimeout(() => router.push('/login'), 3000);
   };
 
   useEffect(() => {
